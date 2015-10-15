@@ -1,6 +1,6 @@
 {
   "name": "ninja-lib",
-  "version": "0.0.53",
+  "version": "0.0.54",
   "description": "library for converting various 3d and texture file formats along with required decompression methods",
   "main": "ninja-lib.js",
   "scripts": {
