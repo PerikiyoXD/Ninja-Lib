@@ -22,11 +22,20 @@ module.exports = {
    var extensions = {
      "AFS" : ".afs",
      "XVMH" : ".xvm",
-     "NJTL" : ".nj",
      "NMDM" : ".njm"
    };
 
    var head = buffer.toString("ascii", 0, 4).trim();
+
+   if(head == "NJTL"){
+     var x = data.toString("hex", 4, 6);
+     x = x.substr(1);
+     if(x == "800"){
+       return ".xj";
+     }else{
+       return ".nj";
+     }
+   }
 
    if(extensions[head]){
      return extensions[head];
