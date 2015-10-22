@@ -22,7 +22,8 @@ module.exports = {
    var extensions = {
      "AFS" : ".afs",
      "XVMH" : ".xvm",
-     "NMDM" : ".njm"
+     "NMDM" : ".njm",
+     "XVMH" : ".xvm"
    };
 
    var head = buffer.toString("ascii", 0, 4).trim();
