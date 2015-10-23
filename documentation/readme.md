@@ -9,7 +9,7 @@ Notable tools for extracting various assets. Will be referenced in the read me b
 Noesis|Dick|Tool for exporting 3d models
 HxD|Maël Hörz|General purpose hex editor
 Puyo Tools|nickworonekin|DC/GC file export tools
-VMT|Scthack|Texture Export Tools
+VMT|Schthack|Texture Export Tools
 
 ###Phantasy Star Online ver. 2 (DC & PC)
 
