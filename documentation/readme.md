@@ -78,8 +78,8 @@ Extended Formats:
 
 ###Compression Formats
 
-**prs**  
-**prc**  
+**.prs**  
+**.pr2**  
 
 
 ###Index
