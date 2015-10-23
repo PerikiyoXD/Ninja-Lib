@@ -59,7 +59,11 @@ Is an archive file which generally contains a group of either textures or models
 BML Archives are used to group various files of an entity into a single archive, specifically it is used to group the textures, animation and models for a given enemy into a single file that can be easily refernced and extracted. BML archives contain a header containing the file names and length of each file contained in the archive. Also note that every file in the archives is compressed with prs and needs to be decompressed when writing to the file system.
 
 **.pvm/.xvm**  
+PVM and XVM are identical in terms of functionality but differ slightly in implementation. Both act as containers for texture files, .pvr for PVM and .xvr for XVM respectively. PVM archives contain a list of the names of the texture files included in the header while XVM does not. To find the names of the files in a XVM achive, one needs to track down the Ninja Texture List (NJTL) header definition of the corresponding model to apply the names. Also .pvr are in a basic 16 bit rgba color structure while .xvr applies DXT compression on top of the pvr color format.
+
 **.rel**  
+ Sega places .rel files in several places in their file structure, so there doesn't seem to be any one specific use for when and where this file format is used. Though the most notable are the n.rel map files containing the stage model information. A .rel file can generally be described as a wrapper format for NJCM chuck files.
+ 
  
 ###File Formats
 
@@ -75,17 +79,28 @@ Contains the Nina motion data for a given model. The file contains a single NNDM
 **.pvr**  
 Is a lossy compressed image format used in several Dreamcast games. The header of the file contains the format, width and height. The color format for each file varies, but is generally constrained to a 16 bit format such as argb1555, rgb565, args4444.
 
+While PSO version 2 only had a limited number of file formats used in the application, porting the game to Xbox and Gamecube must have introduced the dev team to a lot of new file formats and approached. Phantasy Star Online Blue Burst uses Dreamcast file formats for some files and extended, compressed, or otherwise modified versions of their prior counter parts.
+
 Extended Formats:  
 **.xj**   
-**.njm2**  
+Is a 3D file format similar to the .nj format from Version 2 but with serveral changes. The over all parent sibling and node structure hasn't changed, but the way the vertexes, indices and texture attributes are defined inside the file have been modified.
+
+**.njm2**
+Is used for all of the enemy animations used in Episode 1&2 for the Phantasy Star Online Blue Burst data. It's used for .nj models and is almost entirely identical to .njm aside from the spacing of key frames listed inside the file. This file can be read and rearranged back to a normal .njm file faily easily.
+
 **.xjm**   
+Is used for the Set Piece animations in Phantasy Star Online Blue Burst. In Blue Burst the most notable files to be changed from .nj to .xj are the weapons and set pieces. Weapon animations are programmed into the character motion data are are likely not applied to the weapons directly as far as is known. However for Set Pieces, such as doors and warps the animation is applied to the model, and this file variation of ninja motion is used.
+
 **.xvr**  
+Is a lossy image format used for textures. Likely picked up from when the game was ported to XBox, this file structure uses DXT compression to further reduce the size of the file. 
 
 ###Compression Formats
 
 **.prs**  
-**.pr2**  
+A compression format more widely known as LZ77. It is often used in many Sega games as a lossless compression method. Special thanks to Fuzziqer who made the source for his PRS Utility public for members of the community to use. Prs compression is often used to compress files inside of archives. When a .prs file is in the file directly for data, it is often used for text.
 
+**.pr2**  
+While it seems to be a variation on prs, not much is known about this format. Most notably it is used to compress images for the lobby and the character motion animation files inside the game. This format can be decompressed with Tofuman's PRC Utility.
 
 ###Index
 **Characters** Refers to the playable characters and classes such as Humar, or Ramar, etc. It also included NPC characters as they use the same file structure and animations.
