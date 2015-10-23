@@ -58,16 +58,23 @@ Archive formats are used consistently across each version of Phantasy Star Onlin
 
 ###File Formats
 
+While there are several achive and compression files and formats which make the version 2 files look more complicated then they actually are, the assets themselves boil down to a few basic formats.
+
 Basic Formats:
-**.nj**
-**.njm**
-**.pvr**
+**.nj**  
+Is a 3d model format used in Dreamcast games defined in the Ninja_GD.pdf in the katana SDK documentation. The top of the file contains an NJTL header describing the textures and attributes of the textures used in the 3d model. And a NJCM, ninja chunk model body which contains a parent-sibling struct of nodes. Each node has a list of vertexes, normals and uv, and a list of indices describing the faces of the model.  
+
+**.njm**  
+Contains the Nina motion data for a given model. The file contains a single NNDM section which describes the number of key frames for each animation.
+
+**.pvr**  
+Is a lossy compressed image format used in several Dreamcast games. The header of the file contains the format, width and height. The color format for each file varies, but is generally constrained to a 16 bit format such as argb1555, rgb565, args4444.
 
 Extended Formats:
-**.xj**
-**.njm2**
-**.xjm**
-**.xvr**
+**.xj**  
+**.njm2**  
+**.xjm**   
+**.xvr**  
 
 ###Compression Formats
 
