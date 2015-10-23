@@ -49,12 +49,15 @@ Stage Textures|○||.xvm
 
 Archive formats are used consistently across each version of Phantasy Star Online. A description of each one is below.
 
-**gsl**  
-**afs**  
-**bml**  
-**pvm**  
-**xvm**  
-**rel**  
+**.gsl**  
+Is an archive which generally contains files grouped by area. In PSOBB there is a single "data.gsl" file that contains all of the game's Epsisode I&II content. In the Dreamcast version of PSO gsl archives are used to group enemies and set pieces for each of the games stages (forest 1, forest 2, ect), likely to simpliy the process of loading and unloading each stage when reading from the GDRom.  More specific information on this file structure can be found in the "GSL_Format.txt" included in this repository.
+
+**.afs**  
+Is an archive file which generally contains a group of either textures or models. More specifically player textures, weapon models, and weapon textures are grouped in their own respective afs archives. The afs file includes a header for the location and length of each file included in the archive, but not the filename. When exporting files from an afs archive, it's necessary to look at the Interchange File Format header included in the first four bytes of the file to determine the appropriate extension for the contained files. 
+
+**.bml**  
+**.pvm/.xvm**  
+**.rel**  
  
 ###File Formats
 
