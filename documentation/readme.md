@@ -56,6 +56,8 @@ Is an archive which generally contains files grouped by area. In PSOBB there is 
 Is an archive file which generally contains a group of either textures or models. More specifically player textures, weapon models, and weapon textures are grouped in their own respective afs archives. The afs file includes a header for the location and length of each file included in the archive, but not the filename. When exporting files from an afs archive, it's necessary to look at the Interchange File Format header included in the first four bytes of the file to determine the appropriate extension for the contained files. 
 
 **.bml**  
+BML Archives are used to group various files of an entity into a single archive, specifically it is used to group the textures, animation and models for a given enemy into a single file that can be easily refernced and extracted. BML archives contain a header containing the file names and length of each file contained in the archive. Also note that every file in the archives is compressed with prs and needs to be decompressed when writing to the file system.
+
 **.pvm/.xvm**  
 **.rel**  
  
