@@ -1,0 +1,9 @@
+* bml_extract extracts textures to wrong location
+* bml_extract doesn't work for dreamcast files
+
+ignore list:
+.dat
+.bin
+.adx
+.mtl
+.rel
