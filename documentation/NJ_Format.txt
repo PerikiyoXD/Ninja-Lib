@@ -115,3 +115,29 @@ typedef struct {
  The defition for NJS_MODEL is pretty simple. It contains two points, one to the
  vertex list and another to the indice list followed by a three floats for the
  x,y,z center of the model node and lastly a radius given by a float value.
+
+```
+typedef struct {
+  unsigned short Format;          /* Seems to always be 0x2900 */ 
+  unsigned short unknown1;        /* No idea */
+  unsigned short Flags;           /* Seems to always be 0x0000 */
+  unsigned short Num_Vertexes;    /* Number of vertexes in Array */
+  NJS_VECTOR VertexData[]         /* Array of x,y,z floats */
+}NJS_VERTEX_LIST
+```
+
+Sega doesn't give an accurate description of this structure in their Katana SDK
+PDF guide, as such I don't know evactly what's going on. The Vertex List starts
+with four unsigned 16 bit values. The format seems to always be 0x2900, followed
+by a number which I am currently unsure of its use, followed by zero, followed by
+the number of vertexes in the VertexData array. The end of the VertexData is also
+marked in the file with 0xFF000000. Sega's datatype definition for NJS_Vector is
+as given below.
+
+```
+ typedef struct {
+ Float x; /* X value */
+ Float y; /* Y value */
+ Float z; /* Z value */
+ } NJS_POINT3, NJS_VECTOR;
+ ```
