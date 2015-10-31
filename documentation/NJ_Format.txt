@@ -27,11 +27,39 @@ it comes to recognizing when and where these structures are used.
 The NJTL starts off with an interchange file format header which includes a 
 String to identify the format, followed by a dword for the length of the format.
 
-``` typedef struct {
+``` 
+typedef struct {
   char identifier[4];
   dword byte_length;
 } IFF_HEADER;
 ```
 
-Entry Start
-Number of textures
+The NJTL chunk will start following the IFF header, so either trim the file,
+or add the offset of the current position to the pointers. The NJTL structure
+then starts off with two entries. The first is the address to the array of
+structs NJS_TEXNAME and the second gives the number of structs in the array.
+
+```
+typedef struct {
+  NJS_TEXNAME *textures;    /* Texture name list */
+  Uint16 nbTexture;         /* Number of textures */
+} NJS_TEXLIST;
+```
+
+The structure for the NJS_TEXNAME struct is given below. The first entry
+is a pointer to the start of the texture's filename. The second entry is
+an attribute and the third entry is a memory pointer. In every file I have
+seen both of these entries always have the value of zero.
+
+```
+ typedef struct {
+ void *filename;           /* Texture file name */
+ Uint32 attr;              /* Texture attributes */
+ Void *texaddr;            /* Texture memory address */
+ } NJS_TEXNAME;
+```
+
+So NJTL is just an array of string with the texture names for a given model.
+It's pretty easy to find in a file as the filenames standout really easily against
+the background. If you see an 4 byte int value by two 4 byte zero values, it's
+also easy to tell those are the starting pointers for the texture filenames.
