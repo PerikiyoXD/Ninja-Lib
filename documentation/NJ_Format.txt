@@ -106,7 +106,7 @@ and sibling point to other nodes.
 ```
 typedef struct {
  NJS_VERTEX_LIST *points;        /* Vertex list */
- NJS_INDICE_LIST *indices;       /* Normal line vector list */
+ NJS_INDICE_LIST *indices;       /* Indice list */
  Float center[3];                /* Model center */
  Float r;                        /* Radius of circumscribed sphere */
  } NJS_MODEL;
