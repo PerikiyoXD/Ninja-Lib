@@ -102,3 +102,16 @@ The angle is a signed int, 0x000 is 0 and 0xFFFF corresponds to 360 degrees.
 Scale is a scaler value for the model which is every case I've seen is simply,
 [1,1,1] or [0x0000803f,0x0000803f,0x0000803f] in every model I have seen. Child
 and sibling point to other nodes.
+
+```
+typedef struct {
+ NJS_VERTEX_LIST *points;        /* Vertex list */
+ NJS_INDICE_LIST *indices;       /* Normal line vector list */
+ Float center[3];                /* Model center */
+ Float r;                        /* Radius of circumscribed sphere */
+ } NJS_MODEL;
+ ```
+ 
+ The defition for NJS_MODEL is pretty simple. It contains two points, one to the
+ vertex list and another to the indice list followed by a three floats for the
+ x,y,z center of the model node and lastly a radius given by a float value.
