@@ -29,7 +29,7 @@ String to identify the format, followed by a dword for the length of the format.
 
 ``` 
 typedef struct {
-  char identifier[4];
+  char identifier[4];  
   dword byte_length;
 } IFF_HEADER;
 ```
@@ -63,3 +63,42 @@ So NJTL is just an array of string with the texture names for a given model.
 It's pretty easy to find in a file as the filenames standout really easily against
 the background. If you see an 4 byte int value by two 4 byte zero values, it's
 also easy to tell those are the starting pointers for the texture filenames.
+
+--------------------------------------------------------------------------------
+                           NJCM File Format
+--------------------------------------------------------------------------------
+
+The NJCM is idenfifier for the Ninja Model Chunk format Sega used to define the
+game's 3d objects. It follows the NJTL header, though in some models there is
+no NJTL header, in which case it will be at the top of the file. 
+
+``` 
+typedef struct {
+  char identifier[4];
+  dword byte_length;
+} IFF_HEADER;
+```
+
+The NJCM chunk will start following the IFF header, so either trim the file,
+or add the offset of the current position to the pointers. Following that
+will be the first entry for the parent node, which uses the following format.
+
+```
+typedef struct obj {
+  Uint32 evalflags;                /* Evaluation method optimization flag */
+  NJS_MODEL *model;                /* Model structure pointer */
+  Float pos[3];                    /* Parallel motion */
+  Angle ang[3];                    /* Rotation */
+  Float scl[3];                    /* Scale */
+  struct obj *child;               /* Child object pointer */
+  struct obj *sibling;             /* Sibling object pointer */
+} NJS_OBJECT;
+```
+
+The eval flags are binary flags, more information on that will be listed at the
+end of this readme. The NJS_MODEL is a pointer to the information defining the
+node's model. The Float pos[] is are x,y,z translations when writing the vertex.
+The angle is a signed int, 0x000 is 0 and 0xFFFF corresponds to 360 degrees.
+Scale is a scaler value for the model which is every case I've seen is simply,
+[1,1,1] or [0x0000803f,0x0000803f,0x0000803f] in every model I have seen. Child
+and sibling point to other nodes.
