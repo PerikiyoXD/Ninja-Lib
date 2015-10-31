@@ -2,7 +2,7 @@
                             Ninja Model
 --------------------------------------------------------------------------------
 
-Extension: ".nj"
+Extension: "*.nj"
 Version: Phantasy Star Online Version 2 PC
 
 Sega liked to use traditional Japanese names to describe their projects. "Katana"
@@ -24,10 +24,14 @@ it comes to recognizing when and where these structures are used.
                            NJTL File Format
 --------------------------------------------------------------------------------
 
-The NJTL starts off 
+The NJTL starts off with an interchange file format header which includes a 
+String to identify the format, followed by a dword for the length of the format.
 
-Interchange File Format NJTL
-Byte Length
+``` typedef struct {
+  char identifier[4];
+  dword byte_length;
+} IFF_HEADER;
+```
 
 Entry Start
 Number of textures
