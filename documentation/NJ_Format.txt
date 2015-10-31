@@ -2,11 +2,29 @@
                             Ninja Model
 --------------------------------------------------------------------------------
 
-File Summary
+Extension: ".nj"
+Version: Phantasy Star Online Version 2 PC
+
+Sega liked to use traditional Japanese names to describe their projects. "Katana"
+is the name of their SDK for the Dreamcast. "Shinobi" is the name of their audio
+library and following the trend, "Ninja" is the name of their graphics library.
+As such, most file formats involving graphics has the prefix of "Ninja". 
+
+The models are defined by a "Ninja Chunk Model" format which used nodes organized
+in a parent slibling tree structure. More on that later. The names of the textures
+are given in a "Ninja Texture List", which an array of strings often found at the
+top of the file with the names of the textures used for the model. 
+
+The Ninja Chunk Model and Ninja Texture structures are used in other files besides
+the .nj files, they are also used in the map .rel files without the Interchange
+format header attached. Luckly there are some simple patterns that help out when
+it comes to recognizing when and where these structures are used.
 
 --------------------------------------------------------------------------------
                            NJTL File Format
 --------------------------------------------------------------------------------
+
+The NJTL starts off 
 
 Interchange File Format NJTL
 Byte Length
