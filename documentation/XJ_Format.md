@@ -97,7 +97,7 @@ typedef struct {
   Float pos[3];
   Float normals[3];
   NJS_COLOR color;
-  Float uv [2]
+  Float uv[2]
 } NJS_VERTEX_ENTRY
 ```
 
@@ -113,3 +113,29 @@ typedef struct {
  byte a;
 } NJS_COLOR
 ```
+
+Returning back to the definition for NJS_MODEL_XJ, the structure definition for
+NJS_INDICE_LIST is as given blow.
+
+```
+typedef struct {
+  dword texture_index;
+  dword unknown7;
+  word indice_list[];
+  dword num_indices;
+} NJS_INDICE_LIST;
+```
+
+The structure is actually surpiringly simple. The first entry is the texture index
+number given by the texture list in NJTL file format in the begining of the file.
+For example, the saber has three textures in an array, a 0 would indicate the first
+texture in the list, while 2 would indicate the thrid. There's another dword here,
+which I'm not sure of the purpose, followed by a pointer to an array of Uint16
+values which describe the indices for the given list of vertices, and lastly is
+a dword describing the number of UInt16's in the indice array.
+
+With the exceptions of a few unknown dwords, to my knowledge, this is the complete
+definition for the .xj file type as structures described here fill-in inbetween
+eachother. All of the data in the file is parsable, the problem I am currently running
+into is how to evaluate the flags, how to iterate over and draw each node in the structure,
+and how to apply and calculate the translations and rotations for each model.
