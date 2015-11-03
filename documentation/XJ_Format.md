@@ -1,5 +1,4 @@
 ##XJ Ninja Model Defnition
---------------------------------------------------------------------------------
 
 Extension: "*.xj"  
 Version: Phantasy Star Online BlueBurst PC  
@@ -15,9 +14,7 @@ seems that the team took the data directly from the old models and exported it
 into the new format without changes to the original data. This means there are
 parallels to work with and compare when analyzing this format.
 
---------------------------------------------------------------------------------
-                           NJTL File Format
---------------------------------------------------------------------------------
+### NJTL Ninja Texture List Defnition
 
 With the exception of a few models, most models start with an NJTL texture list
 at the top of the file. The NJTL specification is the same one used in the nj
