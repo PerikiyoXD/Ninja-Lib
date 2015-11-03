@@ -20,9 +20,8 @@ With the exception of a few models, most models start with an NJTL texture list
 at the top of the file. The NJTL specification is the same one used in the nj
 files, so please refer to "NJ_Format.md" is this directory for that information.
 
---------------------------------------------------------------------------------
-                           NJCM File Format
---------------------------------------------------------------------------------
+
+### NJCM Ninja Chunk Model Definition
 
 The NJCM is idenfifier for the Ninja Model Chunk format Sega used to define the
 game's 3d objects. It follows the NJTL header, though in some models there is
