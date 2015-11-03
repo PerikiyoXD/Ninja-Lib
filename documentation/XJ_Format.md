@@ -43,7 +43,7 @@ The NJCM chunk will start following the IFF header, so either trim the file,
 or add the offset of the current position to the pointers. Following that
 will be the first entry for the parent node, which uses the following format.
 
-```c
+```c_cpp
 typedef struct obj {
   Uint32 evalflags;                /* Evaluation method optimization flag */
   NJS_MODEL *model;                /* Model structure pointer */
