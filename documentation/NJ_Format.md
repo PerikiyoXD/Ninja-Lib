@@ -8,12 +8,12 @@ Version: Phantasy Star Online Version 2 PC
 Sega liked to use traditional Japanese names to describe their projects. "Katana"
 is the name of their SDK for the Dreamcast. "Shinobi" is the name of their audio
 library and following the trend, "Ninja" is the name of their graphics library.
-As such, most file formats involving graphics has the prefix of "Ninja". 
+As such, most file formats involving graphics has the prefix of "Ninja".
 
 The models are defined by a "Ninja Chunk Model" format which used nodes organized
 in a parent slibling tree structure. More on that later. The names of the textures
 are given in a "Ninja Texture List", which an array of strings often found at the
-top of the file with the names of the textures used for the model. 
+top of the file with the names of the textures used for the model.
 
 The Ninja Chunk Model and Ninja Texture structures are used in other files besides
 the .nj files, they are also used in the map .rel files without the Interchange
@@ -24,10 +24,10 @@ it comes to recognizing when and where these structures are used.
                            NJTL File Format
 --------------------------------------------------------------------------------
 
-The NJTL starts off with an interchange file format header which includes a 
+The NJTL starts off with an interchange file format header which includes a
 String to identify the format, followed by a dword for the length of the format.
 
-``` 
+```
 typedef struct {
   char identifier[4];  
   dword byte_length;
@@ -70,9 +70,9 @@ also easy to tell those are the starting pointers for the texture filenames.
 
 The NJCM is idenfifier for the Ninja Model Chunk format Sega used to define the
 game's 3d objects. It follows the NJTL header, though in some models there is
-no NJTL header, in which case it will be at the top of the file. 
+no NJTL header, in which case it will be at the top of the file.
 
-``` 
+```
 typedef struct {
   char identifier[4];
   dword byte_length;
@@ -111,14 +111,14 @@ typedef struct {
  Float r;                        /* Radius of circumscribed sphere */
  } NJS_MODEL;
  ```
- 
+
  The defition for NJS_MODEL is pretty simple. It contains two points, one to the
  vertex list and another to the indice list followed by a three floats for the
  x,y,z center of the model node and lastly a radius given by a float value.
 
 ```
 typedef struct {
-  unsigned short Format;          /* Seems to always be 0x2900 */ 
+  unsigned short Format;          /* Seems to always be 0x2900 */
   unsigned short unknown1;        /* No idea */
   unsigned short Flags;           /* Seems to always be 0x0000 */
   unsigned short Num_Vertexes;    /* Number of vertexes in Array */
