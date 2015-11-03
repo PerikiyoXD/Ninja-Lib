@@ -2,8 +2,8 @@
                             Ninja Model
 --------------------------------------------------------------------------------
 
-Extension: "*.xj"
-Version: Phantasy Star Online BlueBurst PC
+Extension: "*.xj"  
+Version: Phantasy Star Online BlueBurst PC  
 
 Not exactly sure how or where the xj format came about, though it seems to be
 the format used from Phatasy Star Onlinve Version I&II for Gamecube and onward.
@@ -43,7 +43,7 @@ The NJCM chunk will start following the IFF header, so either trim the file,
 or add the offset of the current position to the pointers. Following that
 will be the first entry for the parent node, which uses the following format.
 
-```
+```c
 typedef struct obj {
   Uint32 evalflags;                /* Evaluation method optimization flag */
   NJS_MODEL *model;                /* Model structure pointer */
