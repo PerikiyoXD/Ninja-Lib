@@ -38,7 +38,7 @@ The NJCM chunk will start following the IFF header, so either trim the file,
 or add the offset of the current position to the pointers. Following that
 will be the first entry for the parent node, which uses the following format.
 
-```c_cpp
+```
 typedef struct obj {
   Uint32 evalflags;                /* Evaluation method optimization flag */
   NJS_MODEL *model;                /* Model structure pointer */
@@ -54,5 +54,62 @@ The initial object structure of xj starts off identical to its nj counter part.
 And also 3d objects, such as the weapons which are in both .nj and .xj format
 have the exact same values for eval flags such as [this example](http://pastebin.com/kM89aUFj)
 which compares the initial values parsed from the saber nj model from version 2,
-to its xj saber model counter part in psobb. After this point, the changes in xj
-start to become more apparent.
+to its xj saber model counter part in psobb.
+
+```
+typedef struct {
+  dword unknown1;
+  NJS_VERTEX_LIST v_list;
+  dword unknown2;
+  NJS_INDICE_LIST t_list_a;
+  dword unknown3;
+  NJS_INDICE_LIST t_list_b,
+  dword unknown4;
+  Float center[3];
+  Float radius;
+ } NJS_MODEL_XJ;
+ ```
+
+This is where the model definition starts to change from the nj format. As opposed
+to two points to sections, XJ has three pointers, one to the vertex list, one to
+the first indice list, and another pointer to the third indice list. At the start
+of this struct is a dword, with a dword entry following each pointer entry. As
+of this time I do not know what purpose these serve, so I'll have to comapre values
+from the xj models to values from the nj models to see if and where these values
+come up.
+
+```
+typedef struct {
+  dword unknown5;
+  NJS_VERTEX_ENTRY vertexes[];
+  dword unknown6;
+  dword num_vertexes;
+} NJS_VERTEX_LIST;
+```
+
+The structure for the NJS_VERTEX_LIST from NJS_MODEL_XJ is given above. There are
+two unknown dwords in the struct, which I am not sure of their purpose along with
+a pointer to the list of vertexes for the model and the number of vertexes in the
+array. Each vertex entry is defined by the followign struct.
+
+```
+typedef struct {
+  Float pos[3];
+  Float normals[3];
+  NJS_COLOR color;
+  Float uv [2]
+} NJS_VERTEX_ENTRY
+```
+
+Overall a pretty straightforward structure. Pos is three floats, one for x, y,
+and z. Three normals, vertex color and two floats for uv. The structure for
+NJS_COLOR is given below.
+
+```
+typedef struct {
+ byte r;
+ byte g;
+ byte b;
+ byte a;
+} NJS_COLOR
+```
