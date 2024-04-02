@@ -1,17 +1,17 @@
-###Documentation
+### Documentation
 Information on the different assets formats used in each Phatasy Star game and how to extract them.  Tools I will be referencing are listed below. An index for how I define asset names is listed at the end of this document.
 
-###Tools
+### Tools
 Notable tools for extracting various assets. Will be referenced in the read me below.
 
-|Tool name|Author|Description|
----|---|---|---
+| Tool name | Author | Description |
+---|---|---
 Noesis|Dick|Tool for exporting 3d models
 HxD|Maël Hörz|General purpose hex editor
 Puyo Tools|nickworonekin|DC/GC file export tools
 VMT|Schthack|Texture Export Tools
 
-###Phantasy Star Online ver. 2 (DC & PC)
+### Phantasy Star Online ver. 2 (DC & PC)
 
 | Asset | Exportable | Ninja-Lib | File Format |
 ---|---|---|---
@@ -27,7 +27,7 @@ Enemy Textures|○||.pvm
 Stages|×||n.rel
 Stage Textures|○||.pvm
 
-###Phantasy Star Online: Blue Burst (PC)
+### Phantasy Star Online: Blue Burst (PC)
 
 | Asset | Exportable | Ninja-Lib | File Format |
 ---|---|---|---
@@ -45,7 +45,7 @@ Enemy Textures|○||.xvm
 Stages|△|△|n.rel
 Stage Textures|○||.xvm
 
-###Archive Formats
+### Archive Formats
 
 Archive formats are used consistently across each version of Phantasy Star Online. A description of each one is below.
 
@@ -65,7 +65,7 @@ PVM and XVM are identical in terms of functionality but differ slightly in imple
  Sega places .rel files in several places in their file structure, so there doesn't seem to be any one specific use for when and where this file format is used. Though the most notable are the n.rel map files containing the stage model information. A .rel file can generally be described as a wrapper format for NJCM chuck files.
  
  
-###File Formats
+### File Formats
 
 While there are several achive and compression files and formats which make the version 2 files look more complicated then they actually are, the assets themselves boil down to a few basic formats.
 
@@ -94,7 +94,7 @@ Is used for the Set Piece animations in Phantasy Star Online Blue Burst. In Blue
 **.xvr**  
 Is a lossy image format used for textures. Likely picked up from when the game was ported to XBox, this file structure uses DXT compression to further reduce the size of the file. 
 
-###Compression Formats
+### Compression Formats
 
 **.prs**  
 A compression format more widely known as LZ77. It is often used in many Sega games as a lossless compression method. Special thanks to Fuzziqer who made the source for his PRS Utility public for members of the community to use. Prs compression is often used to compress files inside of archives. When a .prs file is in the file directly for data, it is often used for text.
@@ -102,7 +102,7 @@ A compression format more widely known as LZ77. It is often used in many Sega ga
 **.pr2**  
 While it seems to be a variation on prs, not much is known about this format. Most notably it is used to compress images for the lobby and the character motion animation files inside the game. This format can be decompressed with Tofuman's PRC Utility.
 
-###Index
+### Index
 **Characters** Refers to the playable characters and classes such as Humar, or Ramar, etc. It also included NPC characters as they use the same file structure and animations.
 
 **Weapons** Refers to any holdable weapon the character can use. Mags are also included in this category and are located in the same archive file as the player weapons.
